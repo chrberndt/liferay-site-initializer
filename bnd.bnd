@@ -1,0 +1,3 @@
+Bundle-Name: My Site Initializer
+Bundle-SymbolicName: com.chberndt.liferay.site.initializer
+Bundle-Version: 1.0.0
