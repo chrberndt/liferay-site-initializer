@@ -7,6 +7,7 @@ Explore the capabilities of Liferay's SiteInitializer interface. Implementation 
 
 * https://github.com/liferay/liferay-portal/tree/master/modules/apps/frontend-theme-fjord/frontend-theme-fjord-site-initializer
 * https://github.com/liferay/com-liferay-commerce/tree/7.1.x/commerce-theme-minium/commerce-theme-minium-site-initializer
+* https://github.com/liferay/com-liferay-commerce/tree/7.1.x/commerce-theme-speedwell/commerce-theme-speedwell-site-initializer
 
 ## Implementation
 
