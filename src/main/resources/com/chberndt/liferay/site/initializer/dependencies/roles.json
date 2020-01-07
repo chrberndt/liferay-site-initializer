@@ -1,0 +1,30 @@
+[
+	{
+		"actions": {
+			"actionIds": [
+				"DELETE",
+				"PERMISSIONS",
+				"UPDATE",
+				"VIEW"
+			],
+			"resource": "com.liferay.dynamic.data.mapping.model.DDMStructure"
+		},
+		"name": "Web Content Manager",
+		"scope": 3,
+		"type": 2
+	},
+	{
+		"actions": {
+			"actionIds": [
+				"DELETE",
+				"PERMISSIONS",
+				"UPDATE",
+				"VIEW"
+			],
+			"resource": "com.liferay.dynamic.data.mapping.model.DDMTemplate"
+		},
+		"name": "Web Content Manager",
+		"scope": 3,
+		"type": 2
+	}
+]
