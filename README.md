@@ -17,7 +17,7 @@ Explore the capabilities of Liferay's SiteInitializer interface. Implementation 
 1. Add `compileOnly group: "com.liferay.portal", name: "com.liferay.portal.kernel"`dependency in `build.gradle`in order to use `com.liferay.site.exception.InitializationException` etc.
 1. Add `compileOnly group: "com.liferay", name: "com.liferay.petra.string"`dependency in `build.gradle`in order to use `com.liferay.petra.string.StringPool` et al.
 1. (Optional) Add `compileOnly group: "javax.servlet", name: "javax.servlet-api"` in order to use `javax.servlet.ServletContext`
-1. + any Liferay API modules you need to initialize your theme, e.g. `com.liferay.fragment.api`, `com.liferay.layout.api`, etc.
+1. `+` any Liferay API modules you need to initialize your theme site, e.g. `com.liferay.fragment.api`, `com.liferay.layout.api`, etc.
 
 ### Implement `initialize()` method
 
