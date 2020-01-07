@@ -9,23 +9,18 @@ import com.liferay.portal.kernel.json.JSONObject;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.model.GroupConstants;
-import com.liferay.portal.kernel.model.Layout;
 import com.liferay.portal.kernel.model.LayoutTypePortlet;
 import com.liferay.portal.kernel.model.ResourceConstants;
 import com.liferay.portal.kernel.model.Role;
-import com.liferay.portal.kernel.service.LayoutSetLocalService;
 import com.liferay.portal.kernel.service.ResourcePermissionLocalService;
 import com.liferay.portal.kernel.service.RoleLocalService;
 import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.portal.kernel.util.ArrayUtil;
 import com.liferay.portal.kernel.util.StringUtil;
-import com.liferay.portal.kernel.util.UnicodeProperties;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Set;
 
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
@@ -43,11 +38,8 @@ import org.osgi.service.component.annotations.Reference;
 )
 public class MyFileImporter {
 
-//	@Override
 	public void createRoles(JSONArray jsonArray, ServiceContext serviceContext) throws PortalException {
 		
-		_log.info("MyFileImporter.createRoles()");
-
 		for (int i = 0; i < jsonArray.length(); i++) {
 			JSONObject jsonObject = jsonArray.getJSONObject(i);
 
@@ -55,6 +47,8 @@ public class MyFileImporter {
 			String name = jsonObject.getString("name");
 			int scope = jsonObject.getInt("scope");
 			int type = jsonObject.getInt("type");
+
+			_log.info("Adding or updating Role " + name);
 
 			Role role = getRole(name, type, serviceContext);
 
@@ -130,29 +124,6 @@ public class MyFileImporter {
 		}
 	}
 
-	protected Layout updateLayoutLookAndFeel(JSONObject jsonObject, Layout layout) {
-
-		UnicodeProperties typeSettingsProperties = layout.getTypeSettingsProperties();
-
-		Iterator<String> iterator = jsonObject.keys();
-
-		while (iterator.hasNext()) {
-			String key = iterator.next();
-
-			Set<String> typeSettingPropertiesKeys = typeSettingsProperties.keySet();
-
-			if (typeSettingPropertiesKeys.contains(key)) {
-				typeSettingsProperties.replace(key, jsonObject.getString(key));
-			} else {
-				typeSettingsProperties.put(key, jsonObject.getString(key));
-			}
-		}
-
-		layout.setTypeSettingsProperties(typeSettingsProperties);
-
-		return layout;
-	}
-
 	protected void updatePermissions(long companyId, String name, String primKey, JSONArray jsonArray)
 			throws PortalException {
 
@@ -189,9 +160,6 @@ public class MyFileImporter {
 
 	@Reference
 	private JSONFactory _jsonFactory;
-
-	@Reference
-	private LayoutSetLocalService _layoutSetLocalService;
 
 	@Reference
 	private ResourcePermissionLocalService _resourcePermissionLocalService;
