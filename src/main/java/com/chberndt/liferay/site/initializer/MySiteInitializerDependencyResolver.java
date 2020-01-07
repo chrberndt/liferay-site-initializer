@@ -2,9 +2,6 @@ package com.chberndt.liferay.site.initializer;
 
 import com.liferay.portal.kernel.util.StringUtil;
 
-//import com.liferay.petra.string.StringUtil;
-//import com.liferay.portal.kernel.util.FileUtil;
-
 import java.io.IOException;
 
 import org.osgi.service.component.annotations.Component;
