@@ -35,7 +35,9 @@ After you have deployed the module to your server, you should see a message like
 
 ## How To Run
 
-* ...
+1. `git clone git@github.com:chrberndt/liferay-site-initializer.git` into `$WORKSPACE_HOME/modules`
+1. Refresh the liferay-workspace with _Gradle → Refresh Gradle Project_ `CTRL + F5`
+1. ...
 1. Create a directory `$WORKSPACE_HOME/configs/local/deploy`
 1. Store your (developer) license in `$WORKSPACE_HOME/configs/local/deploy` so that it gets automatically deployed whenever you run the `initBundle` task
 
