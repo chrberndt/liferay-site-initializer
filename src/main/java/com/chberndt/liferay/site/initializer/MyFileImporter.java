@@ -1,6 +1,5 @@
 package com.chberndt.liferay.site.initializer;
 
-import com.liferay.petra.string.CharPool;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.json.JSONArray;
 import com.liferay.portal.kernel.json.JSONFactory;
@@ -9,14 +8,12 @@ import com.liferay.portal.kernel.json.JSONObject;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.model.GroupConstants;
-import com.liferay.portal.kernel.model.LayoutTypePortlet;
 import com.liferay.portal.kernel.model.ResourceConstants;
 import com.liferay.portal.kernel.model.Role;
 import com.liferay.portal.kernel.service.ResourcePermissionLocalService;
 import com.liferay.portal.kernel.service.RoleLocalService;
 import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.portal.kernel.util.ArrayUtil;
-import com.liferay.portal.kernel.util.StringUtil;
 
 import java.util.HashMap;
 import java.util.Locale;
@@ -54,25 +51,6 @@ public class MyFileImporter {
 
 			updateActions(role, actionsJSONObject, scope, serviceContext);
 		}
-	}
-
-	protected String addPortletId(JSONObject jsonObject, LayoutTypePortlet layoutTypePortlet,
-			ServiceContext serviceContext) throws Exception {
-
-		String layoutColumnId = jsonObject.getString("layoutColumnId");
-		int layoutColumnPos = jsonObject.getInt("layoutColumnPos");
-		String portletName = jsonObject.getString("portletName");
-
-		return layoutTypePortlet.addPortletId(serviceContext.getUserId(), portletName, layoutColumnId, layoutColumnPos,
-				false);
-	}
-
-	protected String getKey(String name) {
-		name = StringUtil.replace(name, CharPool.SPACE, CharPool.DASH);
-
-		name = StringUtil.toUpperCase(name);
-
-		return name;
 	}
 
 	protected Role getRole(String name, int type, ServiceContext serviceContext) throws PortalException {
