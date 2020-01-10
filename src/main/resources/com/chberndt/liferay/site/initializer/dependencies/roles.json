@@ -9,7 +9,7 @@
 			],
 			"resource": "com.liferay.dynamic.data.mapping.model.DDMStructure"
 		},
-		"name": "Web Content Manager",
+		"name": "Site Web Content Manager",
 		"scope": 3,
 		"type": 2
 	},
@@ -23,7 +23,7 @@
 			],
 			"resource": "com.liferay.dynamic.data.mapping.model.DDMTemplate"
 		},
-		"name": "Web Content Manager",
+		"name": "Site Web Content Manager",
 		"scope": 3,
 		"type": 2
 	}
