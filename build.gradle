@@ -1,7 +1,7 @@
 dependencies {
 	compileOnly group: "com.liferay", name: "com.liferay.petra.string"
-	compileOnly group: "com.liferay.portal", name: "com.liferay.portal.kernel"
 	compileOnly group: "com.liferay", name: "com.liferay.site.api"
+	compileOnly group: "com.liferay.portal", name: "com.liferay.portal.kernel"
 	compileOnly group: "javax.portlet", name: "portlet-api"			// because of Language / LanguageUtil
 	compileOnly group: "javax.servlet", name: "javax.servlet-api" 	// because of Language / LanguageUtil
 	compileOnly group: "org.osgi", name: "org.osgi.core"

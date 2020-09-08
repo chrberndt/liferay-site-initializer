@@ -25,13 +25,12 @@ import org.osgi.service.component.annotations.Reference;
 /**
  * @author Christian Berndt
  */
-@Component (
-	immediate=true,
-	property="site.initializer.key=" + MySiteInitalizer.KEY,
-	service=SiteInitializer.class
+@Component(
+	immediate = true, property = "site.initializer.key=" + MySiteInitalizer.KEY,
+	service = SiteInitializer.class
 )
 public class MySiteInitalizer implements SiteInitializer {
-	
+
 	public static final String KEY = "my-site-initializer";
 
 	@Override
@@ -57,36 +56,34 @@ public class MySiteInitalizer implements SiteInitializer {
 	@Override
 	public void initialize(long groupId) throws InitializationException {
 		try {
-			_log.info("MySiteInitializer.initialize()"); 
-			
-			ServiceContext serviceContext = getServiceContext(groupId);
-			
-			createRoles(serviceContext);
+			_log.info("MySiteInitializer.initialize()");
 
-		} catch (Exception e) {
+			ServiceContext serviceContext = getServiceContext(groupId);
+
+			createRoles(serviceContext);
+		}
+		catch (Exception e) {
 			_log.error(e, e);
 
 			throw new InitializationException(e);
-		}		
+		}
 	}
 
 	@Override
 	public boolean isActive(long companyId) {
 		return true;
 	}
-	
+
 	protected void createRoles(ServiceContext serviceContext) throws Exception {
-		
-		_log.info("MySiteInitializer.createRoles()"); 
+		_log.info("MySiteInitializer.createRoles()");
 
 		JSONArray jsonArray = _getJSONArray("roles.json");
 
 		_myFileImporter.createRoles(jsonArray, serviceContext);
-
 	}
-	
+
 	protected ServiceContext getServiceContext(long groupId)
-			throws PortalException {
+		throws PortalException {
 
 		User user = _userLocalService.getUser(PrincipalThreadLocal.getUserId());
 		Group group = _groupLocalService.getGroup(groupId);
@@ -105,32 +102,33 @@ public class MySiteInitalizer implements SiteInitializer {
 
 		return serviceContext;
 	}
-	
+
 	private JSONArray _getJSONArray(String name) throws Exception {
 		return _jsonFactory.createJSONArray(
 			_siteInitializerDependencyResolver.getJSON(name));
 	}
-	
+
 	private static final String _THEME_NAME = "My Theme";
-	
-	private static final Log _log = LogFactoryUtil.getLog(MySiteInitalizer.class);
-	
+
+	private static final Log _log = LogFactoryUtil.getLog(
+		MySiteInitalizer.class);
+
+	@Reference
+	private GroupLocalService _groupLocalService;
+
 	@Reference
 	private JSONFactory _jsonFactory;
-	
+
 	@Reference
-	private Language _language; 
-	
+	private Language _language;
+
 	@Reference
 	private MyFileImporter _myFileImporter;
-	
+
 	@Reference
 	private MySiteInitializerDependencyResolver
 		_siteInitializerDependencyResolver;
 
-	@Reference
-	private GroupLocalService _groupLocalService;
-	
 	@Reference
 	private UserLocalService _userLocalService;
 

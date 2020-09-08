@@ -2,8 +2,7 @@
 
 ## Introduction
 
-
-Explore the capabilities of Liferay's SiteInitializer interface. Implementation based on the model of 
+Explore the capabilities of Liferay's SiteInitializer interface. Implementation based on the model of
 
 * https://github.com/liferay/liferay-portal/tree/master/modules/apps/frontend-theme-fjord/frontend-theme-fjord-site-initializer
 * https://github.com/liferay/com-liferay-commerce/tree/7.1.x/commerce-theme-minium/commerce-theme-minium-site-initializer
@@ -26,14 +25,11 @@ Explore the capabilities of Liferay's SiteInitializer interface. Implementation 
 
 ### Deploy
 
-After you have deployed the module to your server, you should see a message like the following in your server's log: 
+After you have deployed the module to your server, you should see a message like the following in your server's log:
 
 ```
-	2020-01-03 10:16:09.676 INFO  [pipe-start 1113][BundleStartStopLogger:39] STARTED com.chberndt.liferay.site.initializer_1.0.0 [1113]
+	2020-01-03 10:16:09.676 INFO [pipe-start 1113][BundleStartStopLogger:39] STARTED com.chberndt.liferay.site.initializer_1.0.0 [1113]
 ```
-
-
-
 
 ## How To Run
 
@@ -77,5 +73,3 @@ apply plugin: "net.saliman.properties"
 
 apply plugin: "com.liferay.workspace"
 ```
-
-
